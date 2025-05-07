@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLoggedIn = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/user');
+        const res = await axios.get('https://fashionscore22.onrender.com/api/user');
         setUser(res.data.user);
       } catch (error) {
         // User is not logged in or token is invalid
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   // Register user
   const register = async (userData, resetAttempts) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', userData);
+      const res = await axios.post('https://fashionscore22.onrender.com/api/auth/register', userData);
       setUser(res.data.user);
       toast.success('Registration successful!');
       
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   // Login user
   const login = async (credentials, resetAttempts) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', credentials);
+      const res = await axios.post('https://fashionscore22.onrender.com/api/auth/login', credentials);
       setUser(res.data.user);
       toast.success('Login successful!');
       
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   // Logout user
   const logout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/logout');
+      await axios.post('https://fashionscore22.onrender.com/api/auth/logout');
       setUser(null);
       toast.info('Logged out successfully');
     } catch (error) {
@@ -89,7 +89,7 @@ export const AuthProvider = ({ children }) => {
   // Delete account
   const deleteAccount = async () => {
     try {
-      await axios.delete('http://localhost:5000/api/user');
+      await axios.delete('https://fashionscore22.onrender.com/api/user');
       setUser(null);
       toast.info('Account deleted successfully');
       return true;

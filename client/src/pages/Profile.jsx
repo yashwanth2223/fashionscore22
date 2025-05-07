@@ -15,7 +15,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/fashion-history');
+        const response = await axios.get('https://fashionscore22.onrender.com/api/fashion-history');
         setHistory(response.data.history);
       } catch (error) {
         console.error('Error fetching history:', error);
@@ -46,7 +46,7 @@ const Profile = () => {
   // Helper function to get the full image URL
   const getImageUrl = (relativePath) => {
     // Convert relative path to full URL
-    const baseUrl = 'http://localhost:5000';
+    const baseUrl = 'https://fashionscore22.onrender.com';
     // Replace backslashes with forward slashes for URLs
     const formattedPath = relativePath.replace(/\\/g, '/');
     return `${baseUrl}/${formattedPath}`;
