@@ -3,28 +3,33 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const setupDatabase = async () => {
   try {
     // First connect without a database to create it if needed
-    const connection = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: 'Gamma@111r'
+    const connection = await mysql.createPool({
+      host: 'sql12.freesqldatabase.com',
+      user: 'sql12777516',
+      password: process.env.DB_PASSWORD,
     });
     
     console.log('Connected to MySQL server');
     
+    // sql12777516 is from freesqldatabase.com
     // Create database if it doesn't exist
-    await connection.query('CREATE DATABASE IF NOT EXISTS fashionscore');
+    await connection.query('CREATE DATABASE IF NOT EXISTS sql12777516');
     console.log('Database created or already exists');
     
     // Switch to the database
-    await connection.query('USE fashionscore');
-    console.log('Using fashionscore database');
-    
+    await connection.query('USE sql12777516');
+    console.log('Using sql12777516 database'); 
+
     // Create users table
     await connection.query(`
       CREATE TABLE IF NOT EXISTS users (
@@ -47,7 +52,7 @@ const setupDatabase = async () => {
         style_feedback TEXT,
         color_coordination_feedback TEXT,
         fit_feedback TEXT,
-        recommendations JSON,
+        recommendations TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
       )

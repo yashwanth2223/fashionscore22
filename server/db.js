@@ -5,10 +5,10 @@ dotenv.config();
 
 // Create connection pool
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'Gamma@111r',
-  database: 'fashionscore',
+  host: 'sql12.freesqldatabase.com',
+  user: 'sql12777516',
+  password: process.env.DB_PASSWORD,
+  database: 'sql12777516',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0

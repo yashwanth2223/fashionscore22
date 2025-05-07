@@ -18,8 +18,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
+const allowedOrigin = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
 app.use(cors({
-  origin: 'http://localhost:5173', // React app address
+  origin: allowedOrigin,
   credentials: true
 }));
 app.use(bodyParser.json());
